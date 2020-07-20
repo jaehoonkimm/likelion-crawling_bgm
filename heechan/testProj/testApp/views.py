@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from .crawling import crawler
 
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'home.html')
+    arr = crawler.crawler()
+    return render(request, 'home.html', {'arr': arr})

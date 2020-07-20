@@ -9,6 +9,11 @@
 
 <body>
   홈페이지
+  {% for obj in arr %}
+  <p>{{obj.rank}}</p>
+  <p>{{obj.title}}</p>
+  <p>{{obj.singer}}</p>
+  {% endfor %}
 </body>
 
 </html>

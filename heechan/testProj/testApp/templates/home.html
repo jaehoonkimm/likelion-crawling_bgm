@@ -8,28 +8,30 @@
 </head>
 
 <body>
-  홈페이지
   <div style="width: 30px; height: 30px; background-color: aquamarine;">
-    <audio id="autoplayer" onended="javascript:nextPlay(nextSrc)" controls>
-      {% for src in arr %}
-      <source src="{{src}}" type="audio/mp3">
-      {% endfor %}
+    <audio id="autoplayer" onended="javascript:nextPlay()" controls>
+      <!-- {% for src in arr %} -->
+      <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Monplaisir/Heat_of_the_Summer/Monplaisir_-_04_-_Stage_1_Level_24.mp3" type="audio/mp3">
+      <!-- {% endfor %} -->
       
-      {% for nextSrc in arr[1:]%}
-      {% endfor %}
     </audio>
   </div>
-  <script>
-    function nextPlay(nextSrc) {
-      document.getElementById('autoplayer').src = ''
 
+  <script>
+    let arr = "{{arr}}"
+    let re = /(http(s)?:\/\/|www.)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}([\/a-z0-9-%#?&=\w])+(\.[a-z0-9]{2,4}(\?[\/a-z0-9-%#?&=\w]+)*)*/g;
+    let result = arr.match(re);
+    
+    let i = 1
+    function nextPlay() {
+      console.log(i);
+      document.getElementById('autoplayer').src = result[i]
       let media = document.getElementById('autoplayer');
       media.currentTime = 0;
       media.play();
+      i += 1
     }
   </script>
-  
-
   
 </body>
 

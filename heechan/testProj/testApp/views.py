@@ -6,4 +6,5 @@ from .crawling import crawler2
 
 def home(request):
     arr = crawler2.crawler2()
+    
     return render(request, 'home.html', {'arr': arr})

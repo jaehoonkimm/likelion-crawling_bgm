@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  홈페이지
+  <div style="width: 30px; height: 30px; background-color: aquamarine;">
+    <audio id="autoplayer" onended="javascript:nextPlay(nextSrc)" controls>
+      {% for src in arr %}
+      <source src="{{src}}" type="audio/mp3">
+      {% endfor %}
+      
+      {% for nextSrc in arr[1:]%}
+      {% endfor %}
+    </audio>
+  </div>
+  <script>
+    function nextPlay(nextSrc) {
+      document.getElementById('autoplayer').src = ''
+
+      let media = document.getElementById('autoplayer');
+      media.currentTime = 0;
+      media.play();
+    }
+  </script>
+  
+
+  
+</body>
+
+</html>

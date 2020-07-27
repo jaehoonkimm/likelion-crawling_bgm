@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
-def crawler2():
-  r = requests.get("https://freemusicarchive.org/static")
+def crawler2(url):
+  r = requests.get(url)
   html = r.text
   soup = BeautifulSoup(html, 'html.parser')
 

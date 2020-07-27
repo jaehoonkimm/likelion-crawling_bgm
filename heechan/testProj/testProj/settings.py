@@ -25,7 +25,10 @@ SECRET_KEY = 'dz@aa!#a$h5h8%b*n%c!4*2y33&t*)$5t6%*e20186f^cd6$hs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# AWS EC2 Instance 연결
+ALLOWED_HOSTS = [
+    ".ap-northeast-2.compute.amazonaws.com"
+]
 
 
 # Application definition
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'testApp',
+    'imageCrawler',
 ]
 
 MIDDLEWARE = [

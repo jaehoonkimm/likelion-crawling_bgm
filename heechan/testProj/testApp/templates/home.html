@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,118 +6,139 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
-  <style>
-.modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-    
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%; /* Could be more or less, depending on screen size */                          
-        }
-        /* The Close Button */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-
-  </style>
-
+  <link rel="stylesheet" href="../static/home.css">
 </head>
 
 <body>
-  <div style="flex: 1;margin: 20px; border: solid black;">
-    <button id="myBtn"> 설정</button>
-</div>
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
-
-    <form method="GET" action = "{% url 'result' %}">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-              <label><input type="radio" name="setting" value="Blues" checked>Blues</label><br>                                                               
-              <label><input type="radio" name="setting" value="Classical">Classical</label><br>
-              <label><input type="radio" name="setting" value="Country">Country</label><br>
-              <label><input type="radio" name="setting" value="Electronic">Electronic</label><br>
-              <input type="submit" value="바꾸기">
+  <div class="container">
+    <img style="max-width: 100%; max-height: 100%;" src="https://images.unsplash.com/photo-1496582490020-60c1344c64aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=6210&q=80" alt="g">
+    <div class = "container-cover">
+      <div class = "title">
+        <center>❣Play the Music❣</center>
       </div>
-
-    </form>
-
-
+      <h1>{{genre}}</h1>
+      <button id="myBtn"> 설정</button>
+      <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <form method="GET" action = "{% url 'result' %}">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+                <label><input type="radio" name="setting" value="Blues" checked>Blues</label><br>                                                               
+                <label><input type="radio" name="setting" value="Classical">Classical</label><br>
+                <label><input type="radio" name="setting" value="Country">Country</label><br>
+                <label><input type="radio" name="setting" value="Electronic">Electronic</label><br>
+                <label><input type="radio" name="setting" value="Experimental">Experimental</label><br>
+                <label><input type="radio" name="setting" value="Folk">Folk</label><br>
+                <label><input type="radio" name="setting" value="Hip-Hop">Hip-Hop</label><br>
+                <label><input type="radio" name="setting" value="Instrumental">Instrumental</label><br>
+                <label><input type="radio" name="setting" value="International">International</label><br>
+                <label><input type="radio" name="setting" value="Jazz">Jazz</label><br>
+                <label><input type="radio" name="setting" value="Novelty">Novelty</label><br>
+                <label><input type="radio" name="setting" value="Old-Time__Historic">Old-Time__Historic</label><br>
+                <label><input type="radio" name="setting" value="Pop">Pop</label><br>
+                <label><input type="radio" name="setting" value="Rock">Rock</label><br>
+                <label><input type="radio" name="setting" value="Soul-RB">Soul-RB</label><br>
+                <label><input type="radio" name="setting" value="Spoken">Spoken</label><br>
+                <input type="submit" value="바꾸기">
+        </div>
+      </form>
+      </div>
+      <div id="audioplayerskin">
+        <button id="pButton" class="play" onclick="playAudio()"></button>
+        <div id="volume_control"><input type="range" oninput="setVolume(this.value)" onchange="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1"></div>
+      </div>
+      <audio id="audioplayer" onended="javascript:nextPlay()">
+        <source src="{{arr1}}" type="audio/mp3">
+      </audio>
+      <img id="image" src="{{image1}}" alt="사진" style="width: 100px;">
+      <button id="back" onclick="back()">뒤로</button>
+      <button id="next" onclick="nextPlay()">앞으로</button>
+    </div>
   </div>
-
-  <div style="width: 30px; height: 30px; background-color: aquamarine;">
-    <audio id="autoplayer" onended="javascript:nextPlay()" controls>
-      <source src="{{arr1}}" type="audio/mp3">
-    </audio>
-  </div>
-
   <script>
+
     let arr = "{{arr}}"
     let re = /(http(s)?:\/\/|www.)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}([\/a-z0-9-%#?&=\w])+(\.[a-z0-9]{2,4}(\?[\/a-z0-9-%#?&=\w]+)*)*/g;
     let result = arr.match(re);
-    
+
+    let images = "{{images}}"
+    let oldimgArr = images.split('&#x27;');
+    let newimgArr = [];
+
+    oldimgArr.forEach((v, i) => {
+        if (i % 2 == 1) {
+          newimgArr.unshift(v);
+        }
+      })
+
     let i = 1
     function nextPlay() {
       console.log(i);
-      document.getElementById('autoplayer').src = result[i]
-      let media = document.getElementById('autoplayer');
+      document.getElementById('audioplayer').src = result[i]
+      let media = document.getElementById('audioplayer');
       media.currentTime = 0;
       media.play();
+      
+
+      document.getElementById('image').src = newimgArr[i]
+
       i += 1
+      if (i == 19) {
+        i = 0
+      }
     }
 
-    // Get the modal
+    function back() {
+      i -= 2
+      if(i < 0) {
+        i = 19
+      }
+      nextPlay()
+    }
+
+
+    let music = document.getElementById('audioplayer');
+    let pButton = document.getElementById('pButton');
+    function playAudio() {
+      console.log('playAuio');
+      console.log(music);
+      if (music.paused) {
+        music.play();
+        pButton.className = "";
+        pButton.className = "pause";
+      } else {
+        music.pause();
+        pButton.className = "";
+        pButton.className = "play";
+      }
+    }
+    function setVolume(volume) { music.volume = volume }
+
     var modal = document.getElementById('myModal');
- 
- // Get the button that opens the modal
- var btn = document.getElementById("myBtn");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
- // Get the <span> element that closes the modal
- var span = document.getElementsByClassName("close")[0];                                          
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];                                          
 
- // When the user clicks on the button, open the modal 
- btn.onclick = function() {
-     modal.style.display = "block";
- }
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
 
- // When the user clicks on <span> (x), close the modal
- span.onclick = function() {
-     modal.style.display = "none";
- }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 
- // When the user clicks anywhere outside of the modal, close it
- window.onclick = function(event) {
-     if (event.target == modal) {
-         modal.style.display = "none";
-     }
- }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
   </script>
-  
 </body>
 
 </html>

@@ -27,7 +27,8 @@ DEBUG = True
 
 # AWS EC2 Instance 연결
 ALLOWED_HOSTS = [
-    ".ap-northeast-2.compute.amazonaws.com"
+   # ".ap-northeast-2.compute.amazonaws.com"
+   '*'
 ]
 
 

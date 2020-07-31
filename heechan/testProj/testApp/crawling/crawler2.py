@@ -7,8 +7,19 @@ def crawler2(url):
   soup = BeautifulSoup(html, 'html.parser')
 
   my_titles = soup.select('a.icn-arrow')
+  my_music = soup.select('.playtxt'> '.ptxt-track')
+  my_artist = soup.select('.playtxt .ptxt-track')
+
   arr = []
-  for title in my_titles:
-      arr.append(title.get('href'))
+  music_title = []
+  music_artist= []
+  for j in my_music:
+    title_re = re.sub('(<([^>]+)>)',"",str(j))
+    title_re  = title_re.replace('\n',"")
+    music_title.append(title_re)
+  for k in my_artist:
+    artist_re = re.sub('(<([^>]+)>)',"",str(k))
+    artist_re  = artist_re.replace('\n',"")
+    music_artist.append(artist_re)
   
-  return arr
+  return arr,music_title,music_artist

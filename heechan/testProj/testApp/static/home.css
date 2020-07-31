@@ -2,6 +2,7 @@ body{
  background-image : url('https://images.unsplash.com/photo-1496582490020-60c1344c64aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=6210&q=80');
  background-repeat: no-repeat;
  background-size :cover;
+ font-family: "Segoe Script";
 }
 #audioplayerskin {
   width: 300px;
@@ -183,4 +184,8 @@ input {
 }
 h1{
   color : white;
+}
+
+#modal {
+  cursor: pointer;
 }

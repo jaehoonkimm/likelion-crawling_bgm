@@ -3,6 +3,7 @@ body{
  background-repeat: no-repeat;
  background-size :cover;
  font-family: "Segoe Script";
+ background-color: black;
 }
 #audioplayerskin {
   width: 300px;

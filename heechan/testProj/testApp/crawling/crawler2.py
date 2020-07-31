@@ -14,6 +14,7 @@ def crawler2(url):
   arr = []
   music_title = []
   music_artist= []
+  
   for title in my_titles:
       arr.append(title.get('href'))
   for j in my_music:

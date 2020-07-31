@@ -52,12 +52,14 @@
       </form>
       </div>
       <div class = "name">
-        <center><h1> Wonder Gi - tell me</h1></center>
+        <center><h1 id="music_artist">{{artist1}}</h1>
+        <h2 id ="music_title"></h2>
+        </center>
         <br>
       </div>
       <div id="audioplayerskin">
         <button id="back" onclick="back()"></button>
-        <button id="pButton" class="play" onclick="playAudio()"></button>
+        <button id="pButton" class="play" onc lick="playAudio()"></button>
         <button id="next" onclick="nextPlay()"></button>
         <br />
         <div id="volume_control">
@@ -71,8 +73,19 @@
   </div>
   <script>
     let arr = "{{arr}}"
+    let title_arr = "{{title}}".replace(/, |,|/g,"")
+    let artist_arr = "{{artist}}".replace(/&#x27;|,|[|]/g,"")
     let re = /(http(s)?:\/\/|www.)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}([\/a-z0-9-%#?&=\w])+(\.[a-z0-9]{2,4}(\?[\/a-z0-9-%#?&=\w]+)*)*/g;
     let result = arr.match(re);
+    let result2 = title_arr.split('&#x27;')
+    let result3 = artist_arr.split('&quot;')
+    result2 = result2.filter(function(item) {
+  return item !== null && item !== undefined && item !== '';
+});
+    result3 = result3.filter(function(item) {
+  return item !== null && item !== undefined && item !== ' ';
+});
+    console.log(result2)
 
     let images = "{{images}}"
     let oldimgArr = images.split('&#x27;');
@@ -88,7 +101,12 @@
     function nextPlay() {
       console.log(i);
       document.querySelector('body').style.backgroundImage = `url(${newimgArr[i]})`;
-      document.getElementById('audioplayer').src = result[i]
+      document.getElementById('audioplayer').src = result[i];
+      document.getElementById('music_artist').innerText = result2[i+1];
+      document.getElementById('music_title').innerText = result3[i+1];
+      
+      document.getElementById
+
       let media = document.getElementById('audioplayer');
       media.currentTime = 0;
       media.play();

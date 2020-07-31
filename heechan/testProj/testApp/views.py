@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .crawling import crawler
 from .crawling import crawler2
 from .crawling import crawler3
 from .crawling import image

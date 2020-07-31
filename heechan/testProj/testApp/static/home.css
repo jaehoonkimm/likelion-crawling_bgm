@@ -1,8 +1,8 @@
-body, html {
-  width: 100%;
-  height: 100%;
+body{
+ background-image : url('https://images.unsplash.com/photo-1496582490020-60c1344c64aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=6210&q=80');
+ background-repeat: no-repeat;
+ background-size :cover;
 }
-
 #audioplayerskin {
   width: 300px;
   height: auto;
@@ -21,7 +21,7 @@ input[type=range] {
 
 input[type="range" i] {
   appearance: slider-horizontal;
-  color: rgb(16, 16, 16);
+  color: black;
   cursor: default;
   padding: initial;
   border: initial;
@@ -119,27 +119,68 @@ input {
 }
 
 .container{
-  position: fixed;
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%; 
-  height : auto;  
-  top : 0;
-  left : 0;
-}
-.container-cover{
-  position: relative; 
-  background-color: white; 
-  width : 100%; 
-  height : 800px;
-  top : -850px; 
-  left : 0;
-  margin : 0;
-  opacity : 0.6;
+  width : 100%;
+  height : 100%;
+  overflow: visible;
+  overflow-x: visible;
+  overflow-y: visible;
 }
 .title{
-  top : 100px;
-  position: relative; 
-  color:black;
-  font-size: 50px;
+  margin : 10px 0px 20px 0px;
+  color: white;
+  font-size: 30px;
+  text-align : center;
+}
+.genre{
+  text-align : center;
+  align-items: center;
+  color: white;
+  display: inline;
+  font-weight : bold;
+  font-size : 25px;
+}
+
+#myBtn {
+  margin-left: 7px;
+}
+.audioplayerskin{
+  display : inline;
+}
+
+#next {
+  background: url(https://user-images.githubusercontent.com/58321792/89032139-f6480600-d36e-11ea-833b-7e3acdc267c3.png);
+  width: 30px;
+  animation: animate 5s linear infinite;
+  cursor: pointer;
+
+  height: 50px;
+  width: 50px;
+  border: none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: none;
+  margin-left : 10px;
+}
+
+#back {
+  background: url(https://user-images.githubusercontent.com/58321792/89031864-4e323d00-d36e-11ea-841b-bc38f859e71a.png);
+  width: 30px;
+  animation: animate 5s linear infinite;
+  cursor: pointer;
+
+  height: 50px;
+  width: 50px;
+  border: none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: none;
+  margin-right : 10px;
+}
+#rngVolume{
+  background-color : white;
+}
+h1{
+  color : white;
 }

@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from .crawling import crawler
 from .crawling import crawler2
 from .crawling import crawler3
 from .crawling import image
+import re
 
 # Create your views here.
 
@@ -17,8 +19,10 @@ def result(request):
     setting = request.GET.get('setting', '')
     url = "https://freemusicarchive.org/genre/" + setting
     arr,title,artist = crawler2.crawler2(url)
-    title1,artist1 = title[0],artist[0]
+    
     arr1 = arr[0] if arr else ''
+    atitle1,artist1 = title[0],artist[0]
+    
     images = image.url_get(setting)
     image1 = images[0]
 

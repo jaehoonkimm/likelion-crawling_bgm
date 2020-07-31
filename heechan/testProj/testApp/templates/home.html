@@ -4,7 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>🎧Rolling Rolling🎧</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+/>
   <link rel="stylesheet" href="../static/home.css">
 </head>
 
@@ -17,7 +22,7 @@
     <div class = "genre">
       <p>
         𝒫𝓁𝒶𝓎𝒾𝓃𝑔 𝒢𝑒𝓃𝓇𝑒 : {{genre}}
-        <button id="myBtn" class = "z_index"> Click ! </button>
+        <button id="myBtn" class = "z_index"> ✏️Change✏️ </button>
       </p>
       <br>
     </div>
@@ -56,6 +61,7 @@
         <button id="back" onclick="back()"></button>
         <button id="pButton" class="play" onc lick="playAudio()"></button>
         <button id="next" onclick="nextPlay()"></button>
+        <br />
         <div id="volume_control">
           <input type="range" oninput="setVolume(this.value)" onchange="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
         </div>        
@@ -162,6 +168,23 @@
         }
     }
   </script>
+  <div 
+  style="background-color: black;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-weight: bolder;
+  color: white;
+  font-family: 'Nanum Myeongjo', serif;">
+  ©2020 LikeLion Hanyang ERICA • Crawling Random BGM Team • 
+  <a href="https://github.com/jaehoonkimm/likelion-crawling_bgm"
+  style="color: white;">
+    <i class="fab fa-github-alt"> GITHUB</i>
+  </a>
+  <br />
+  </div>
 </body>
 
 </html>

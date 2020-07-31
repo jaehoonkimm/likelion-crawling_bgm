@@ -2,6 +2,9 @@
 
 This is The Hackathon project of Likelion ERICA - Random BGM team
 
+# URL
+  > www.random-bgm.shop  
+
 ## Requirements
 > Python(at least 3.6)
 >> Django  

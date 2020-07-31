@@ -3,6 +3,8 @@ body{
  background-repeat: no-repeat;
  background-size :cover;
  font-family: "Segoe Script";
+ background-color: black;
+ font-family: 'Lobster', cursive;
 }
 #audioplayerskin {
   width: 300px;
@@ -142,18 +144,26 @@ input {
 }
 
 #myBtn {
-  margin-left: 7px;
+    font-family: 'Lobster', cursive;
+    margin-left: 7px;
+    background-color : white;
+    border-radius: 40px;
+    font-weight : bold;
+    font-size : 15px;
+    outline: none;
+    border: none;
+    cursor : pointer;
 }
+
 .audioplayerskin{
   display : inline;
 }
 
 #next {
+  padding-top: 100px;
   background: url(https://user-images.githubusercontent.com/58321792/89032139-f6480600-d36e-11ea-833b-7e3acdc267c3.png);
-  width: 30px;
   animation: animate 5s linear infinite;
   cursor: pointer;
-
   height: 50px;
   width: 50px;
   border: none;
@@ -161,12 +171,14 @@ input {
   background-repeat: no-repeat;
   background-position: center;
   outline: none;
-  margin-left : 10px;
+  margin-left : 30px;
+  
 }
 
 #back {
+  padding-top: 100px;
   background: url(https://user-images.githubusercontent.com/58321792/89031864-4e323d00-d36e-11ea-841b-bc38f859e71a.png);
-  width: 30px;
+
   animation: animate 5s linear infinite;
   cursor: pointer;
 
@@ -177,7 +189,7 @@ input {
   background-repeat: no-repeat;
   background-position: center;
   outline: none;
-  margin-right : 10px;
+  margin-right : 30px;
 }
 #rngVolume{
   background-color : white;

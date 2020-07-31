@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import re
 
 def crawler2(url):
   r = requests.get(url)
@@ -13,6 +14,9 @@ def crawler2(url):
   arr = []
   music_title = []
   music_artist= []
+  
+  for title in my_titles:
+      arr.append(title.get('href'))
   for j in my_music:
     title_re = re.sub('(<([^>]+)>)',"",str(j))
     title_re  = title_re.replace('\n',"")
@@ -21,5 +25,4 @@ def crawler2(url):
     artist_re = re.sub('(<([^>]+)>)',"",str(k))
     artist_re  = artist_re.replace('\n',"")
     music_artist.append(artist_re)
-  
   return arr,music_title,music_artist

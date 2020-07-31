@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,15 +9,19 @@
 </head>
 
 <body>
-  <div class="container">
-    <img style="max-width: 100%; max-height: 100%;" src="https://images.unsplash.com/photo-1496582490020-60c1344c64aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=6210&q=80" alt="g">
-    <div class = "container-cover">
-      <div class = "title">
-        <center>❣Play the Music❣</center>
+  <div class = "container">
+      <div class = "title z_index">
+        <h1>Ⓡⓞⓛⓛⓘⓝⓖ Ⓡⓞⓛⓛⓘⓝⓖ</h1>
       </div>
-      <h1>{{genre}}</h1>
-      <button id="myBtn"> 설정</button>
-      <div id="myModal" class="modal">
+      <br>
+    <div class = "genre">
+      <p>
+        Playng Genre : {{genre}}
+        <button id="myBtn" class = "z_index"> Click ! </button>
+      </p>
+      <br>
+    </div>
+      <div id="myModal" class="modal z_index">
       <!-- Modal content -->
       <form method="GET" action = "{% url 'result' %}">
         <div class="modal-content">
@@ -43,17 +46,25 @@
         </div>
       </form>
       </div>
+      <div class = "image">
+        <center><img id="image" src="../static/마녀배달부 키키2.jpg" alt="사진" style="width: 200px;"></center>
+      </div>
+      <div class = "name">
+        <center><h1>원더걸스 - tell me</h1></center>
+        <br>
+      </div>
       <div id="audioplayerskin">
+        <button id="back" onclick="back()"></button>
         <button id="pButton" class="play" onclick="playAudio()"></button>
-        <div id="volume_control"><input type="range" oninput="setVolume(this.value)" onchange="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1"></div>
+        <button id="next" onclick="nextPlay()"></button>
+        <div id="volume_control">
+          <input type="range" oninput="setVolume(this.value)" onchange="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
+        </div>        
       </div>
       <audio id="audioplayer" onended="javascript:nextPlay()">
         <source src="{{arr1}}" type="audio/mp3">
       </audio>
-      <img id="image" src="{{image1}}" alt="사진" style="width: 100px;">
-      <button id="back" onclick="back()">뒤로</button>
-      <button id="next" onclick="nextPlay()">앞으로</button>
-    </div>
+            
   </div>
   <script>
 

@@ -30,10 +30,15 @@ def url_get(keyword="coffee"):
                 innerSoup = bs(innerhtml, 'html.parser')
                 temp = innerSoup.select('div._2yFK-.IEpfq > img._2zEKz[src]')
                 for url in temp:
-                    photoURL_ls.append(url['srcset'].split("w,")[8])
+                    photoURL_ls.append(url['srcset'].split("w,")[8].replace(" ", ""))
+
         cnt = cnt+1
         if(cnt==20):
             break
+            
+    photoURL_ls = set(photoURL_ls)
+    photoURL_ls = list(photoURL_ls)
+
     return photoURL_ls
 
 if __name__=='__main__':

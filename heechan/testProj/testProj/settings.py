@@ -23,12 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dz@aa!#a$h5h8%b*n%c!4*2y33&t*)$5t6%*e20186f^cd6$hs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # AWS EC2 Instance 연결
 ALLOWED_HOSTS = [
-   # ".ap-northeast-2.compute.amazonaws.com"
-   '*'
+        "localhost", "127.0.0.1", "[::1]",
+        ".ap-northeast-2.compute.amazonaws.com",
+        ".random-bgm.shop",
 ]
 
 

@@ -186,6 +186,10 @@ h1{
   color : white;
 }
 
+h2{
+  color: white;
+}
+
 #modal {
   cursor: pointer;
 }

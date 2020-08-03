@@ -24,5 +24,4 @@ def crawler2(url):
     artist_re = re.sub('(<([^>]+)>)',"",str(k))
     artist_re  = artist_re.replace('\n',"")
     music_artist.append(artist_re)
-  
   return arr,music_title,music_artist
